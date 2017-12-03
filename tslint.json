@@ -1,0 +1,38 @@
+{
+  "extends": [
+    "tslint-xo",
+    "tslint-config-prettier"
+  ],
+  "rules": {
+    "no-namespace": false,
+    "no-require-imports": false,
+    "comment-format": false,
+    "prefer-const": true,
+    "no-unused-expression": true,
+    "no-unused-variable": [
+      "error",
+      {
+        "vars": "all",
+        "args": "after-used",
+        "ignoreRestSiblings": false
+      }
+    ],
+    "no-use-before-declare": [
+      "error",
+      {
+        "functions": true,
+        "classes": true
+      }
+    ],
+    "interface-name": [
+      true,
+      "never-prefix"
+    ],
+    "arrow-return-shorthand": true,
+    "only-arrow-functions": [
+      true,
+      "allow-declarations",
+      "allow-named-functions"
+    ]
+  }
+}
