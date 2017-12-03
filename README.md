@@ -19,6 +19,23 @@ Options:
   --help     Show help                                                 [boolean]
 ```
 
+## Example
+
+```bash
+$ min img
+ ✔ Minify
+
+ Filename      Size «B»   Size «A»  
+ ------------  ---------  ----------
+ nest/npm.jpg  34.93 KB   9.99 KB   
+ npm.jpg       34.93 KB   9.99 KB   
+ npm.png       3.34 KB    1.46 KB   
+ cat.gif       989.78 KB  989.41 KB
+ npm.svg       3.46 KB    2.98 KB   
+ ------------  ---------  ----------
+               1.04 MB    1013.84 KB
+```
+
 ## TODO
 
 - [x] minify jpg

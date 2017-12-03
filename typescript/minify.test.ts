@@ -6,7 +6,7 @@ import {promisify} from 'util';
 const pExecFile = promisify(execFile);
 const tsNode = path.join(__dirname, '../node_modules/.bin/ts-node');
 const tsconfig = path.join(__dirname, '../tsconfig.json');
-const cli = path.join(__dirname, '../src/cli.ts');
+const cli = path.join(__dirname, 'index.ts');
 const originalDir = path.join(__dirname, 'fixtures/original');
 const tmpDir = path.join(__dirname, 'fixtures/tmp');
 
@@ -22,6 +22,8 @@ const tmp = async (str: TemplateStringsArray): Promise<number> => {
 };
 
 describe('min', () => {
+  jest.setTimeout(30000);
+
   beforeEach(async () => {
     await fs.ensureDir(tmpDir);
     await fs.copy(originalDir, tmpDir);

@@ -54,6 +54,6 @@
     "prepare": "yarn build",
     "build":
       "rm -rf dist && node_modules/.bin/gp build && gsed -i '1i#!/usr/bin/env node' dist/index.js | :",
-    "test": "jest --runInBand"
+    "test": "jest --runInBand typescript/**"
   }
 }
