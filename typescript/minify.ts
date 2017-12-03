@@ -10,6 +10,7 @@ import pngcrush = require('imagemin-pngcrush');
 import pngquant = require('imagemin-pngquant');
 import gifsicle = require('imagemin-gifsicle');
 import svgo = require('imagemin-svgo');
+import webp = require('imagemin-webp');
 
 export interface Data {
   filename: string;
@@ -35,7 +36,7 @@ const getData = async (dirname: string, pattern: string): Promise<Data[]> => {
 };
 
 export const minify = {
-  async jpg(dirname: string): Promise<Data[]> {
+  async jpg(dirname: string, toWebp: boolean = false): Promise<Data[]> {
     const pattern = path.join(dirname, '**/*.jp?(e)g');
     const data = await getData(dirname, pattern);
 
@@ -51,7 +52,7 @@ export const minify = {
           [path.join(dirname, relativePath, '*.jp?(e)g')],
           path.join(dirname, relativePath),
           {
-            plugins: [mozjpeg()],
+            plugins: [toWebp ? webp() : mozjpeg()],
           },
         );
 
@@ -65,7 +66,7 @@ export const minify = {
 
     return flatten(results);
   },
-  async png(dirname: string): Promise<Data[]> {
+  async png(dirname: string, toWebp: boolean = false): Promise<Data[]> {
     const pattern = path.join(dirname, '**/*.png');
     const data = await getData(dirname, pattern);
 
@@ -81,7 +82,7 @@ export const minify = {
           [path.join(dirname, relativePath, '*.png')],
           path.join(dirname, relativePath),
           {
-            plugins: [pngcrush(), pngquant()],
+            plugins: [pngcrush(), toWebp ? webp() : pngquant()],
           },
         );
 

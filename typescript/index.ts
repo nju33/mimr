@@ -77,7 +77,13 @@ const log = (data: Data[]) => {
       'jpg',
       'Minify *.jpg',
       command => {
-        return command.help();
+        return command
+          .option('webp', {
+            alias: 'w',
+            type: 'boolean',
+            default: false,
+          })
+          .help();
       },
       async () => {
         let result: Data[] = [];
@@ -85,7 +91,7 @@ const log = (data: Data[]) => {
           {
             title: 'Minify',
             task: async () => {
-              result = await minify.jpg(process.cwd());
+              result = await minify.jpg(process.cwd(), args.webp);
             },
           },
         ]);
@@ -100,7 +106,13 @@ const log = (data: Data[]) => {
       'png',
       'Minify *.png',
       command => {
-        return command.help();
+        return command
+          .option('webp', {
+            alias: 'w',
+            type: 'boolean',
+            default: false,
+          })
+          .help();
       },
       async () => {
         let result: Data[] = [];
@@ -108,7 +120,7 @@ const log = (data: Data[]) => {
           {
             title: 'Minify',
             task: async () => {
-              result = await minify.png(process.cwd());
+              result = await minify.png(process.cwd(), args.webp);
             },
           },
         ]);
