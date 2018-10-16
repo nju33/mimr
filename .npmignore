@@ -1,6 +1,0 @@
-/.circleci
-/tsconfig*.json
-/tslint.json
-/jest.config.js
-/gp.config.js
-/typescript

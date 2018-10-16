@@ -1,3 +1,4 @@
+
 {
   "extends": "./tsconfig.base",
   "include": [
@@ -8,6 +9,7 @@
   ],
   "compilerOptions": {
     "module": "esnext",
-    "outDir": "./dist/module",
+    "declaration": true,
+    "outDir": "./dist/types",
   }
 }
